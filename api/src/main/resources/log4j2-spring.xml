@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="LOG_PATTERN">
+            [%d{yyyy-MM-dd'T'HH:mm:ss.SSS' UTC'XXX}] [X-Request-ID:%X{X-Request-ID}]
+            [Latency:%X{latency}]
+            [%t]
+            [%highlight{%p}{FATAL=red, ERROR=red, WARN=yellow, INFO=green, DEBUG=green, TRACE=green}]
+            [%highlight{%-40.40logger{1.}}] %m%n
+        </Property>
+        <Property name="LOG_DIR">logs</Property>
+        <Property name="APP_NAME">currency-exchange-service</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console output -->
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout disableAnsi="false" pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- Rolling file output (disabled by default, enable if needed) -->
+        <!--
+        <RollingRandomAccessFile
+                name="RollingFile"
+                fileName="${LOG_DIR}/${APP_NAME}.log"
+                filePattern="${LOG_DIR}/archive/${APP_NAME}-%d{yyyy-MM-dd}-%i.log.gz">
+
+            <PatternLayout disableAnsi="false" pattern="${LOG_PATTERN}"/>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="500MB"/>
+            </Policies>
+
+            <DefaultRolloverStrategy max="100"/>
+        </RollingRandomAccessFile>
+        -->
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <!-- <AppenderRef ref="RollingFile"/> -->
+        </Root>
+    </Loggers>
+
+</Configuration>

@@ -1,0 +1,9 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: electrostore-app:latest
+    container_name: electrostore-app
+    ports:
+      - "8080:8080"

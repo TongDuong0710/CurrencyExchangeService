@@ -1,0 +1,31 @@
+@startuml
+autonumber
+actor Admin as A
+participant Controller as C
+participant Service as S
+participant Repository as R
+database DB as D
+
+A -> C : Perform admin action\n(e.g., Create Product)
+C -> S : Validate + map DTO
+S -> R : Execute use case\n(save/find/update)
+R -> D : SQL/ORM operation
+D --> R : Result (rows/entity)
+R --> S : Domain model/entity
+S --> C : Map to Response DTO
+C --> A : HTTP 200 + payload
+
+hnote over S, D
+Transactions & constraints
+enforced here
+end hnote
+
+hnote over C, S
+Input validation, authz,
+business rules
+end hnote
+@enduml
+
+--------------------------------------------------------
+
+

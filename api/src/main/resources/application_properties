@@ -1,0 +1,38 @@
+spring.application.name=ElectroStore
+
+# H2 in-memory DB
+#spring.datasource.url=jdbc:h2:mem:electrostore;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#spring.datasource.driver-class-name=org.h2.Driver
+#spring.datasource.username=sa
+#spring.datasource.password=
+
+# Hibernate auto-create schema
+#spring.jpa.hibernate.ddl-auto=create-drop
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+#spring.jpa.show-sql=true
+
+# H2 console (optional, useful for debugging)
+#spring.h2.console.enabled=true
+#spring.h2.console.path=/h2-console
+
+
+# Postgres DB
+spring.datasource.url=jdbc:postgresql://localhost:5432/electrostore?currentSchema=electrostore
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Optional Hibernate config
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# Liquibase
+spring.liquibase.enabled=true
+spring.liquibase.url=jdbc:postgresql://localhost:5432/electrostore?currentSchema=electrostore
+spring.liquibase.user=postgres
+spring.liquibase.password=postgres
+spring.liquibase.change-log=classpath:db/changelog/changelog-master.xml
+
+
+

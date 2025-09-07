@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: electrostore-app:latest
-    container_name: electrostore-app
+    image: exchange-rate-app:latest
+    container_name: exchange-rate-app
     ports:
       - "8080:8080"

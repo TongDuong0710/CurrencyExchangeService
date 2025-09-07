@@ -1,18 +1,12 @@
 # Stage 1: Build JAR
-FROM maven:3.9.5-eclipse-temurin-21 AS build
-COPY . /app
+FROM maven:3.8.8-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run JAR
-FROM eclipse-temurin:21-jdk-alpine
-VOLUME /tmp
-
-# Copy JAR to image
-COPY api/target/api-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose port
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/api/target/api-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Run application
 ENTRYPOINT ["java", "-jar", "app.jar"]

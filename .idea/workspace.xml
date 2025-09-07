@@ -5,92 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="385a2926-d181-4167-9766-397a0fa4792a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/configurations/AsyncConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/configurations/FeignLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/configurations/I18nConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/resources/messages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/resources/messages_zh.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/example/api/controller/CurrencyControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/example/api/controller/ExchangeRateControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/example/api/integration_test/CurrencyControllerIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/example/api/integration_test/CurrencyRepositoryAdapterIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/example/api/integration_test/ExchangeRateControllerIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/example/api/integration_test/ExchangeRateRepositoryAdapterIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/example/api/integration_test/ExchangeRateSyncJobIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/job/ExchangeRateSyncJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/service/ExchangeRateAsyncService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/service/impl/ExchangeRateServiceAsyncImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/test/java/com/example/application/job/ExchangeRateSyncJobUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/test/java/com/example/application/service/CurrencyApplicationServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/test/java/com/example/application/service/ExchangeRateApplicationServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/src/test/java/com/example/application/service/ExchangeRateServiceAsyncImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/service/MaintainExchangeRateService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/mapper/CurrencyEntityMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/src/test/java/com/example/infra/adapter/CurrencyRepositoryAdapterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/src/test/java/com/example/infra/adapter/ExchangeRateRepositoryAdapterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/src/test/java/com/example/infra/adapter/OandaApiClientAdapterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/CurrencyExchangeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/CurrencyExchangeApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/configurations/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/configurations/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/controller/AdviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/controller/AdviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/controller/CurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/controller/CurrencyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/controller/ExchangeRateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/controller/ExchangeRateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/dto/base/BaseResponseApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/dto/base/BaseResponseApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/dto/request/CurrencyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/dto/request/CurrencyRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/dto/response/ExchangeRateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/dto/response/ExchangeRateResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/filter/RequestIdFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/filter/RequestIdFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/filter/WebserviceLoggingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/filter/WebserviceLoggingFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/mapper/CurrencyApiMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/mapper/CurrencyApiMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/example/api/mapper/ExchangeRateApiMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/example/api/mapper/ExchangeRateApiMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/AdminDeleteProductTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/BaseE2E.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/CatalogPriceBoundaryTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/CheckoutHappyFlowTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/ConcurrentAddStockTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/DealOddQuantityTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/ExpiredDealTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/InsufficientStockTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/IntegrationTest/AdminProductAppServiceIntegrationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/PaginationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/PercentageDealTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/RemoveFromBasketTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/java/com/example/api/controller/AdminProductControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/test/resources/application-test.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/dto/CurrencyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/dto/CurrencyDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/dto/ExchangeRateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/dto/ExchangeRateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/exceptions/AppResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/exceptions/AppResponseCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/mapper/CurrencyApplicationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/mapper/CurrencyApplicationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/mapper/ExchangeRateApplicationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/mapper/ExchangeRateApplicationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/provider/ExchangeRateApiClientProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/provider/ExchangeRateApiClientProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/service/ExchangeRateApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/service/ExchangeRateApplicationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/service/impl/CurrencyApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/service/impl/CurrencyApplicationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/com/example/application/service/impl/ExchangeRateApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/com/example/application/service/impl/ExchangeRateApplicationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/exception/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/exception/ResponseCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/model/CurrencyCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/model/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/model/ExchangeRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/model/ExchangeRateValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/ports/ExchangeRateApiClientPort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/ports/ExchangeRateRepositoryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/ports/ExchangeRateRepositoryPort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/service/MaintainCurrencyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/service/MaintainCurrencyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/src/main/java/com/example/domain/service/SyncExchangeRateService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Electro Store Documentation.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Electro Store Testing Documentation.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/ElectroStore.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/currencyExchange.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/data/currencyExchange.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/adapter/OandaApiClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/adapter/OandaApiClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/client/OandaApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/client/OandaApiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/client/OandaFeignConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/client/OandaFeignConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/dto/OandaApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/dto/OandaApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/external/mapper/OandaApiMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/adapter/CurrencyRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/adapter/CurrencyRepositoryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/adapter/ExchangeRateRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/adapter/ExchangeRateRepositoryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/entity/CurrencyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/entity/CurrencyEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/entity/ExchangeRateEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/entity/ExchangeRateEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/mapper/CurrencyPersistenceMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/mapper/ExchangeRatePersistenceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/mapper/ExchangeRateEntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/repository/JpaCurrencyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/repository/JpaCurrencyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/repository/JpaExchangeRateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infra/src/main/java/com/example/infra/persistence/repository/JpaExchangeRateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,12 +66,14 @@
     "JUnit.CurrencyControllerIntegrationTest.executor": "Run",
     "JUnit.CurrencyControllerTest.executor": "Run",
     "JUnit.CurrencyRepositoryAdapterIntegrationTest.executor": "Run",
+    "JUnit.CurrencyRepositoryAdapterTest.executor": "Run",
     "JUnit.DealOddQuantityE2E.executor": "Debug",
     "JUnit.DealOddQuantityTests.executor": "Run",
     "JUnit.ExchangeRateApplicationServiceImplTest.executor": "Run",
     "JUnit.ExchangeRateControllerIntegrationTest.executor": "Run",
     "JUnit.ExchangeRateControllerTest.executor": "Run",
     "JUnit.ExchangeRateRepositoryAdapterIntegrationTest.executor": "Run",
+    "JUnit.ExchangeRateRepositoryAdapterTest.executor": "Run",
     "JUnit.ExchangeRateServiceAsyncImplTest.executor": "Run",
     "JUnit.ExchangeRateSyncJobIntegrationTest.executor": "Run",
     "JUnit.ExchangeRateSyncJobUnitTest.executor": "Run",
@@ -156,6 +81,7 @@
     "JUnit.ExpiredDealTests.executor": "Run",
     "JUnit.InsufficientStockE2E.executor": "Debug",
     "JUnit.InsufficientStockTests.executor": "Run",
+    "JUnit.OandaApiClientAdapterTest.executor": "Run",
     "JUnit.PaginationTests.executor": "Run",
     "JUnit.PercentageDealE2E.executor": "Debug",
     "JUnit.PercentageDealTests.executor": "Run",
@@ -203,13 +129,28 @@
       <recent name="com.example.infra.adapter" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CurrencyRepositoryAdapterIntegrationTest">
+  <component name="RunManager" selected="Application.CurrencyExchangeApplication">
     <configuration name="CurrencyExchangeApplication" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.api.CurrencyExchangeApplication" />
       <module name="api" />
       <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CurrencyControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.api.integration_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.api.integration_test" />
+      <option name="MAIN_CLASS_NAME" value="com.example.api.integration_test.CurrencyControllerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -224,6 +165,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example.api.integration_test" />
       <option name="MAIN_CLASS_NAME" value="com.example.api.integration_test.CurrencyRepositoryAdapterIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExchangeRateControllerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.api.integration_test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.api.integration_test" />
+      <option name="MAIN_CLASS_NAME" value="com.example.api.integration_test.ExchangeRateControllerIntegrationTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -244,21 +200,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExchangeRateServiceAsyncImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.application.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.application.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.application.service.ExchangeRateServiceAsyncImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ExchangeRateSyncJobIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="api" />
       <extension name="coverage">
@@ -274,36 +215,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExchangeRateSyncJobUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.api.integration_test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.application.job" />
-      <option name="MAIN_CLASS_NAME" value="com.example.application.job.ExchangeRateSyncJobUnitTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.CurrencyExchangeApplication" />
+      <item itemvalue="JUnit.CurrencyControllerIntegrationTest" />
+      <item itemvalue="JUnit.ExchangeRateControllerIntegrationTest" />
       <item itemvalue="JUnit.CurrencyRepositoryAdapterIntegrationTest" />
       <item itemvalue="JUnit.ExchangeRateRepositoryAdapterIntegrationTest" />
-      <item itemvalue="JUnit.ExchangeRateServiceAsyncImplTest" />
       <item itemvalue="JUnit.ExchangeRateSyncJobIntegrationTest" />
-      <item itemvalue="JUnit.ExchangeRateSyncJobUnitTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CurrencyRepositoryAdapterIntegrationTest" />
-        <item itemvalue="JUnit.ExchangeRateRepositoryAdapterIntegrationTest" />
-        <item itemvalue="JUnit.ExchangeRateServiceAsyncImplTest" />
         <item itemvalue="JUnit.ExchangeRateSyncJobIntegrationTest" />
-        <item itemvalue="JUnit.ExchangeRateSyncJobUnitTest" />
+        <item itemvalue="JUnit.ExchangeRateRepositoryAdapterIntegrationTest" />
+        <item itemvalue="JUnit.ExchangeRateControllerIntegrationTest" />
+        <item itemvalue="JUnit.CurrencyRepositoryAdapterIntegrationTest" />
+        <item itemvalue="JUnit.CurrencyControllerIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -329,6 +255,11 @@
           <url>file://$PROJECT_DIR$/api/src/test/java/com/example/api/controller/AdminProductControllerTest.java</url>
           <line>20</line>
           <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/test/java/com/example/api/integration_test/CurrencyControllerIntegrationTest.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="128" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/api/src/test/java/com/example/api/controller/AdminProductControllerTest.java</url>

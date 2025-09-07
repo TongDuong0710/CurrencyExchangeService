@@ -9,8 +9,9 @@ import com.example.infra.external.dto.OandaApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -27,8 +28,21 @@ public class OandaApiClientAdapter implements ExchangeRateApiClientProvider {
     @Override
     public ExchangeRate fetchRates(String baseCurrency, String targetCurrency) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String startDate = LocalDate.now().minusDays(1).format(formatter);
-        String endDate   = LocalDate.now().format(formatter);
+
+        // yesterday in UTC
+        String startDate = LocalDateTime.now()
+                .minusDays(1)
+                .atZone(ZoneId.systemDefault())   // convert system time → zoned
+                .withZoneSameInstant(ZoneOffset.UTC) // shift to UTC
+                .toLocalDate()
+                .format(formatter);
+
+        // today in UTC
+        String endDate = LocalDateTime.now()
+                .atZone(ZoneId.systemDefault())
+                .withZoneSameInstant(ZoneOffset.UTC)
+                .toLocalDate()
+                .format(formatter);
 
         OandaApiResponse response = feignClient.getRates(
                 baseCurrency,

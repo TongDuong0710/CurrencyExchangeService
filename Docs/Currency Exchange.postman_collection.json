@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "7ccdd246-2f3c-46d5-92f8-87db5693b2a3",
+		"name": "Currency Exchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19179133"
+	},
+	"item": [
+		{
+			"name": "Currency",
+			"item": [
+				{
+					"name": "Get all currencies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "zh",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/currencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a currency by code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/currencies/JPY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"currencies",
+								"JPY"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new currency",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"TWSD\",\r\n  \"name\": \"Taiwan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/currencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing currency",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"JPY\",\r\n  \"name\": \"Japanese Yen\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/currencies/JPY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"currencies",
+								"JPY"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a currency",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"JPY\",\r\n  \"name\": \"Japanese Yen\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/currencies/TWSD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"currencies",
+								"TWSD"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exchange Rate",
+			"item": [
+				{
+					"name": "Get exchange rates by base currency (from DB)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/exchange-rates/USD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"exchange-rates",
+								"USD"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get exchange rate by base and quote (from DB)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/exchange-rates/USD/EUR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"exchange-rates",
+								"USD",
+								"EUR"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get live exchange rates by base currency (from OANDA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/exchange-rates/live/USD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"exchange-rates",
+								"live",
+								"USD"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get live exchange rate by base and quote (from OANDA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/exchange-rates/live/USD/JPY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"exchange-rates",
+								"live",
+								"USD",
+								"JPY"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

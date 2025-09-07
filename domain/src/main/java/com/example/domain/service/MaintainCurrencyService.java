@@ -5,9 +5,11 @@ import com.example.domain.exception.ResponseCode;
 import com.example.domain.model.Currency;
 import com.example.domain.ports.CurrencyRepositoryPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 @RequiredArgsConstructor
 public class MaintainCurrencyService {
     private final CurrencyRepositoryPort currencyRepository;

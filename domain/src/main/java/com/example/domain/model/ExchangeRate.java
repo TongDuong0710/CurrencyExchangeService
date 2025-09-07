@@ -14,6 +14,14 @@ import java.time.LocalDateTime;
 public class ExchangeRate {
     private String baseCurrency;
     private String targetCurrency;
-    private double rate;
-    private LocalDateTime timestamp;
+    private double averageBid;
+    private double averageAsk;
+    private LocalDateTime updatedTime;
+
+    /**
+     * Mid-market rate (average of bid and ask).
+     */
+    public double getRate() {
+        return (averageBid + averageAsk) / 2.0;
+    }
 }

@@ -1,11 +1,10 @@
 package com.example.application.service.impl;
 
-
 import com.example.application.dto.ExchangeRateDto;
 import com.example.application.mapper.ExchangeRateApplicationMapper;
+import com.example.application.provider.ExchangeRateApiClientProvider;
+import com.example.application.provider.ExchangeRateRepositoryProvider;
 import com.example.application.service.ExchangeRateApplicationService;
-import com.example.domain.ports.ExchangeRateRepositoryPort;
-import com.example.domain.service.SyncExchangeRateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,15 +14,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ExchangeRateApplicationServiceImpl implements ExchangeRateApplicationService {
 
-    private final SyncExchangeRateService syncExchangeRateService;
-    private final ExchangeRateRepositoryPort exchangeRateRepository;
+    private final ExchangeRateRepositoryProvider exchangeRateRepository;
+    private final ExchangeRateApiClientProvider exchangeRateApiClient;
+
     private final ExchangeRateApplicationMapper mapper;
 
-    @Override
-    public void syncExchangeRates(String baseCurrency, List<String> targetCurrencies) {
-        syncExchangeRateService.syncRates(baseCurrency, targetCurrencies);
-    }
-
+    /**
+     * Get all exchange rates for a given base currency from DB.
+     */
     @Override
     public List<ExchangeRateDto> getRatesByBase(String baseCurrency) {
         return exchangeRateRepository.findByBaseCurrency(baseCurrency)
@@ -31,4 +29,44 @@ public class ExchangeRateApplicationServiceImpl implements ExchangeRateApplicati
                 .map(mapper::toDto)
                 .toList();
     }
+
+    /**
+     * Get a specific exchange rate (base → quote) from DB.
+     */
+    @Override
+    public ExchangeRateDto getRatesByBaseAndQuote(String baseCurrency, String quoteCurrency) {
+        return exchangeRateRepository.findByBaseAndTarget(baseCurrency, quoteCurrency)
+                .map(mapper::toDto)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("Exchange rate not found for " + baseCurrency + "→" + quoteCurrency));
+    }
+
+    @Override
+    public List<ExchangeRateDto> getLiveRatesByBase(String baseCurrency) {
+        return mapper.toDto(exchangeRateApiClient.fetchRates(baseCurrency));
+    }
+
+    @Override
+    public ExchangeRateDto getLiveRatesByBaseAndQuote(String baseCurrency, String quoteCurrency) {
+        return mapper.toDto(exchangeRateApiClient.fetchRates(baseCurrency, quoteCurrency));
+    }
+
+    @Override
+    public void saveOrUpdate(ExchangeRateDto dto) {
+        var model = mapper.toDomain(dto);
+        exchangeRateRepository.save(model);
+    }
+    @Override
+    public void saveOrUpdateAll(List<ExchangeRateDto> dtos) {
+        if (dtos == null || dtos.isEmpty()) {
+            return;
+        }
+
+        var models = dtos.stream()
+                .map(mapper::toDomain)
+                .toList();
+
+        exchangeRateRepository.saveAll(models); // batch insert/update
+    }
+
 }

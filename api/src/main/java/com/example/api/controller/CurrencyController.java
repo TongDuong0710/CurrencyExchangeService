@@ -1,6 +1,5 @@
 package com.example.api.controller;
 
-
 import com.example.api.dto.base.BaseResponseApi;
 import com.example.api.dto.request.CurrencyRequest;
 import com.example.api.dto.response.CurrencyResponse;
@@ -11,9 +10,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -24,32 +23,32 @@ public class CurrencyController {
 
     private final CurrencyApplicationService currencyService;
     private final CurrencyApiMapper mapper;
+    private final MessageSource messageSource;
 
     @Operation(summary = "Get all currencies")
     @GetMapping
     public BaseResponseApi<List<CurrencyResponse>> getAll() {
-        List<CurrencyResponse> result = currencyService.getAllCurrencies()
+        var result = currencyService.getAllCurrencies()
                 .stream()
                 .map(mapper::toResponse)
                 .toList();
-        return BaseResponseApi.success(result);
+
+        return BaseResponseApi.success(result, messageSource);
     }
 
     @Operation(summary = "Get a currency by code")
     @GetMapping("/{code}")
     public BaseResponseApi<CurrencyResponse> getOne(@PathVariable String code) {
-        return BaseResponseApi.success(
-                mapper.toResponse(currencyService.getCurrency(code))
-        );
+        var dto = currencyService.getCurrency(code);
+        return BaseResponseApi.success(mapper.toResponse(dto), messageSource);
     }
 
     @Operation(summary = "Add a new currency")
     @PostMapping
     public BaseResponseApi<CurrencyResponse> add(@Valid @RequestBody CurrencyRequest request) {
         CurrencyDto dto = mapper.toApplicationDto(request);
-        return BaseResponseApi.success(
-                mapper.toResponse(currencyService.addCurrency(dto))
-        );
+        var saved = currencyService.addCurrency(dto);
+        return BaseResponseApi.success(mapper.toResponse(saved), messageSource);
     }
 
     @Operation(summary = "Update an existing currency")
@@ -58,17 +57,15 @@ public class CurrencyController {
             @PathVariable String code,
             @Valid @RequestBody CurrencyRequest request) {
         CurrencyDto dto = mapper.toApplicationDto(request);
-        dto.setCode(code); // code comes from path
-        return BaseResponseApi.success(
-                mapper.toResponse(currencyService.updateCurrency(dto))
-        );
+        dto.setCode(code);
+        var updated = currencyService.updateCurrency(dto);
+        return BaseResponseApi.success(mapper.toResponse(updated), messageSource);
     }
 
     @Operation(summary = "Delete a currency by code")
     @DeleteMapping("/{code}")
     public BaseResponseApi<Void> delete(@PathVariable String code) {
         currencyService.deleteCurrency(code);
-        return BaseResponseApi.success(null);
+        return BaseResponseApi.success(null, messageSource);
     }
 }
-

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(
         name = "oanda-api",
-        url = "${oanda.api.url}", // configurable in application.yml
         configuration = OandaFeignConfiguration.class
 )
 public interface OandaApiClient {

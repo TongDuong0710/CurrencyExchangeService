@@ -1,37 +1,41 @@
 package com.example.api.dto.base;
 
-/** This class represent the body that will be return to client. */
+import com.example.application.exceptions.AppResponseCode;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+
 public record BaseResponseApi<T>(BaseResponseStatus status, T data, BaseResponseMeta metaData) {
 
-  private static final String SUCCESS_CODE = "ES-0000";
-  private static final String SUCCESS_MSG = "Success";
+    private BaseResponseApi(BaseResponseStatus status, BaseResponseMeta metaData) {
+        this(status, null, metaData);
+    }
 
-  private BaseResponseApi(BaseResponseStatus status, BaseResponseMeta metaData) {
-    this(status, null, metaData);
-  }
+    // SUCCESS
+    public static <T> BaseResponseApi<T> success(T data, MessageSource messageSource) {
+        String message = messageSource.getMessage(
+                AppResponseCode.SUCCESS.getMessageKey(),
+                null,
+                LocaleContextHolder.getLocale()
+        );
+        return new BaseResponseApi<>(
+                new BaseResponseStatus(AppResponseCode.SUCCESS.getCode(), message),
+                data,
+                BaseResponseMeta.generate()
+        );
+    }
 
-  public static <T> BaseResponseApi<T> success(T data) {
-    return success(new BaseResponseStatus(SUCCESS_CODE, SUCCESS_MSG), data);
-  }
+    // ERROR (with data)
+    public static <T> BaseResponseApi<T> error(String errorCode, String messageKey, T data, MessageSource messageSource) {
+        String message = messageSource.getMessage(messageKey, null, messageKey, LocaleContextHolder.getLocale());
+        return new BaseResponseApi<>(
+                new BaseResponseStatus(errorCode, message),
+                data,
+                BaseResponseMeta.generate()
+        );
+    }
 
-  public static <T> BaseResponseApi<T> success(BaseResponseStatus status, T data) {
-    BaseResponseMeta metaData = BaseResponseMeta.generate();
-
-    return new BaseResponseApi<>(status, data, metaData);
-  }
-
-  public static <T> BaseResponseApi<T> error(
-      String errorCode, String errorMessage, T data) {
-    BaseResponseStatus status = new BaseResponseStatus(errorCode, errorMessage);
-    BaseResponseMeta metaData = BaseResponseMeta.generate();
-
-    return new BaseResponseApi<>(status, data, metaData);
-  }
-    public static <T> BaseResponseApi<T> error(
-            String errorCode, String errorMessage) {
-        BaseResponseStatus status = new BaseResponseStatus(errorCode, errorMessage);
-        BaseResponseMeta metaData = BaseResponseMeta.generate();
-
-        return new BaseResponseApi<>(status,null, metaData);
+    // ERROR (no data)
+    public static <T> BaseResponseApi<T> error(String errorCode, String messageKey, MessageSource messageSource) {
+        return error(errorCode, messageKey, null, messageSource);
     }
 }

@@ -3,26 +3,18 @@ package com.example.application.exceptions;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-import static org.springframework.http.HttpStatus.*;
-
 @Getter
 public enum AppResponseCode {
-    SUCCESS(OK, "ES-0000", "Success"),
-    SERVER_ERROR(INTERNAL_SERVER_ERROR, "DM-5000", "Server error"),
-
-    NOT_FOUND(BAD_REQUEST, "APP-4000", "Not found"),
-    INVALID_PARAM(BAD_REQUEST, "APP-4002", "Invalid Parameter"),
-    INSUFFICIENT_STOCK(CONFLICT, "APP-0409", "Insufficient stock"),
-
-    ;
+    SUCCESS(HttpStatus.OK, "ES-0000", "app.success"),
+    SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "DM-5000", "error.internal_server");
 
     private final HttpStatus httpStatus;
     private final String code;
-    private final String message;
+    private final String messageKey;
 
-    AppResponseCode(HttpStatus httpStatus, String code, String message) {
+    AppResponseCode(HttpStatus httpStatus, String code, String messageKey) {
         this.httpStatus = httpStatus;
         this.code = code;
-        this.message = message;
+        this.messageKey = messageKey;
     }
 }

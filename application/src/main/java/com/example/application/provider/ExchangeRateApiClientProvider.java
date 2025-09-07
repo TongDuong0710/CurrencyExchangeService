@@ -1,6 +1,10 @@
 package com.example.application.provider;
 
-import com.example.domain.ports.ExchangeRateApiClientPort;
+import com.example.domain.model.ExchangeRate;
 
-public interface ExchangeRateApiClientProvider extends ExchangeRateApiClientPort {
+import java.util.List;
+
+public interface ExchangeRateApiClientProvider {
+    ExchangeRate fetchRates(String baseCurrency, String targetCurrency);
+    List<ExchangeRate> fetchRates(String baseCurrency);
 }

@@ -8,7 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -25,32 +24,29 @@ import java.util.stream.Collectors;
 @Order(3)
 public class WebserviceLoggingFilter extends OncePerRequestFilter {
 
-    private static final List<MediaType> VISIBLE_TYPES = Arrays.asList(
-            MediaType.valueOf("text/*"),
-            MediaType.APPLICATION_JSON,
-            MediaType.valueOf("application/*+json")
-    );
-
-    private static boolean isValidMediaType(ContentCachingRequestWrapper request) {
-        if (ObjectUtils.isNotEmpty(request.getContentType())) {
-            MediaType mediaType = MediaType.valueOf(request.getContentType());
-            return VISIBLE_TYPES.stream().anyMatch(mt -> mt.includes(mediaType));
-        }
-        return false;
-    }
-
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
+        String path = request.getRequestURI();
+
+        // Skip logging for H2 console & favicon
+        if (path.startsWith("/h2-console") || path.equals("/favicon.ico")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         long start = System.currentTimeMillis();
+        ContentCachingRequestWrapper wrappedRequest = wrapRequest(request);
+        ContentCachingResponseWrapper wrappedResponse = wrapResponse(response);
+
         try {
-            if (isAsyncDispatch(request)) {
-                filterChain.doFilter(request, response);
-            } else {
-                doFilterWrapped(wrapRequest(request), wrapResponse(response), filterChain);
-            }
+            filterChain.doFilter(wrappedRequest, wrappedResponse);
         } finally {
+            logRequestBody(wrappedRequest);
+            logResponseBody(wrappedRequest, wrappedResponse);
+            wrappedResponse.copyBodyToResponse();
+
             long duration = System.currentTimeMillis() - start;
             MDC.put("latency", String.valueOf(duration));
             log.info("Request completed: {} {} -> {} ({} ms)",
@@ -62,29 +58,12 @@ public class WebserviceLoggingFilter extends OncePerRequestFilter {
         }
     }
 
-
-    private void doFilterWrapped(ContentCachingRequestWrapper request,
-                                 ContentCachingResponseWrapper response,
-                                 FilterChain filterChain) throws ServletException, IOException {
-        try {
-            if (isValidMediaType(request)) {
-                logRequestBody(request);
-            }
-            filterChain.doFilter(request, response);
-        } finally {
-            if (isValidMediaType(request)) {
-                logResponseBody(request, response);
-            }
-        }
-    }
-
     private void logRequestBody(ContentCachingRequestWrapper request) {
         byte[] content = request.getContentAsByteArray();
         String body = new String(content);
         String queryString = request.getQueryString();
 
         String prefix = prefixLog();
-
         StringBuilder sb = new StringBuilder(prefix);
         sb.append("INCOMING REQUEST - ")
                 .append(String.format("PATH=[%s] METHOD=[%s] PARAMS=[%s]",
@@ -106,10 +85,8 @@ public class WebserviceLoggingFilter extends OncePerRequestFilter {
                                  ContentCachingResponseWrapper response) throws IOException {
         int status = response.getStatus();
         String body = new String(response.getContentAsByteArray());
-        response.copyBodyToResponse();
 
         String prefix = prefixLog();
-
         StringBuilder sb = new StringBuilder(prefix);
         sb.append("OUTGOING RESPONSE - ")
                 .append(String.format("PATH=[%s] METHOD=[%s] STATUS=[%d]",

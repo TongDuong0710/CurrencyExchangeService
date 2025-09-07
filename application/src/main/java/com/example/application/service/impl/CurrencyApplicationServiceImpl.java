@@ -2,6 +2,7 @@ package com.example.application.service.impl;
 
 
 import com.example.application.dto.CurrencyDto;
+import com.example.application.mapper.CurrencyApplicationMapper;
 import com.example.application.service.CurrencyApplicationService;
 import com.example.domain.model.Currency;
 import com.example.domain.service.MaintainCurrencyService;
@@ -20,10 +21,7 @@ public class CurrencyApplicationServiceImpl implements CurrencyApplicationServic
 
     @Override
     public List<CurrencyDto> getAllCurrencies() {
-        return maintainCurrencyService.getAllCurrencies()
-                .stream()
-                .map(mapper::toDto)
-                .toList();
+        return mapper.toDto(maintainCurrencyService.getAllCurrencies());
     }
 
     @Override
@@ -34,8 +32,6 @@ public class CurrencyApplicationServiceImpl implements CurrencyApplicationServic
     @Override
     public CurrencyDto addCurrency(CurrencyDto dto) {
         Currency currency = mapper.toDomain(dto);
-        currency.setCreatedAt(LocalDateTime.now());
-        currency.setUpdatedAt(LocalDateTime.now());
         return mapper.toDto(maintainCurrencyService.addCurrency(currency));
     }
 

@@ -1,7 +1,9 @@
 package com.example.infra.external.client;
 
-
+import feign.Logger;
+import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
+
 
 public class OandaFeignConfiguration {
 

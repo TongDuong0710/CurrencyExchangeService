@@ -13,8 +13,8 @@ public class SwaggerConfig {
     public OpenAPI openAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("ElectroStore API")
-                        .description("API for managing products, deals, baskets and receipts")
+                        .title("Currency Exchange API")
+                        .description("API for Currency Exchange")
                         .version("1.0.0")
                         .contact(new Contact()
                                 .name("Tong Duong")

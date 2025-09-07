@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * Main Spring Boot application entry point.
@@ -13,9 +15,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @SpringBootApplication(scanBasePackages = {"com.example"})
 @ConfigurationPropertiesScan(basePackages = {"com.example"})
-@EntityScan("com.example.infra.entity")
-@EnableJpaRepositories(basePackages = "com.example.infra.repository")
+@EntityScan("com.example.infra.persistence.entity")
+@EnableJpaRepositories(basePackages = "com.example.infra.persistence.repository")
 @EnableJpaAuditing
+@EnableScheduling
+@EnableFeignClients(basePackages = {"com.example.infra.external.client"})
 public class CurrencyExchangeApplication {
     public static void main(String[] args) {
         SpringApplication.run(CurrencyExchangeApplication.class, args);

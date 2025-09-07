@@ -1,34 +1,37 @@
 spring:
-  application:
-    name: currency-service
-
   datasource:
-    url: jdbc:h2:mem:currencydb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:file:./data/currencyExchange;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE
     driver-class-name: org.h2.Driver
     username: sa
     password:
 
+  messages:
+    basename: messages
+    encoding: UTF-8
+
   jpa:
     hibernate:
-      ddl-auto: create-drop
-    database-platform: org.hibernate.dialect.H2Dialect
+      ddl-auto: update   # update schema without dropping data
     show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
 
   h2:
     console:
       enabled: true
       path: /h2-console
 
-# Feign client configs
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: FULL
-
-# OANDA API config
-oanda:
-  api:
-    url: https://fxds-public-exchange-rates-api.oanda.com
+  # Feign client configs
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+      circuitbreaker:
+        enabled: true
+      client:
+        config:
+          oanda-api:
+            url: https://fxds-public-exchange-rates-api.oanda.com
+            loggerLevel: FULL
+            connectTimeout: 25000
+            readTimeout: 25000
+            followRedirects: false

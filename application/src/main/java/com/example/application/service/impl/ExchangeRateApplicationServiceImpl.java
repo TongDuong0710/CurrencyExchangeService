@@ -24,10 +24,7 @@ public class ExchangeRateApplicationServiceImpl implements ExchangeRateApplicati
      */
     @Override
     public List<ExchangeRateDto> getRatesByBase(String baseCurrency) {
-        return exchangeRateRepository.findByBaseCurrency(baseCurrency)
-                .stream()
-                .map(mapper::toDto)
-                .toList();
+        return mapper.toDto(exchangeRateRepository.findByBaseCurrency(baseCurrency));
     }
 
     /**

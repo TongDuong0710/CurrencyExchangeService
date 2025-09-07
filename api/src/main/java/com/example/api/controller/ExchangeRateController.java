@@ -28,12 +28,7 @@ public class ExchangeRateController {
     @Operation(summary = "Get exchange rates by base currency (DB)")
     @GetMapping("/{baseCurrency}")
     public BaseResponseApi<List<ExchangeRateResponse>> getRatesByBase(@PathVariable String baseCurrency) {
-        var result = exchangeRateService.getRatesByBase(baseCurrency)
-                .stream()
-                .map(mapper::toResponse)
-                .toList();
-
-        return BaseResponseApi.success(result, messageSource);
+        return BaseResponseApi.success(mapper.toResponse(exchangeRateService.getRatesByBase(baseCurrency)), messageSource);
     }
 
     /**
@@ -54,12 +49,7 @@ public class ExchangeRateController {
     @Operation(summary = "Get live exchange rates by base currency (OANDA)")
     @GetMapping("/live/{baseCurrency}")
     public BaseResponseApi<List<ExchangeRateResponse>> getLiveRatesByBase(@PathVariable String baseCurrency) {
-        var result = exchangeRateService.getLiveRatesByBase(baseCurrency)
-                .stream()
-                .map(mapper::toResponse)
-                .toList();
-
-        return BaseResponseApi.success(result, messageSource);
+        return BaseResponseApi.success(mapper.toResponse(exchangeRateService.getLiveRatesByBase(baseCurrency)), messageSource);
     }
 
     /**

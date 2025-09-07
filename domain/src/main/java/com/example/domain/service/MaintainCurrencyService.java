@@ -7,6 +7,7 @@ import com.example.domain.ports.CurrencyRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Component
@@ -15,7 +16,10 @@ public class MaintainCurrencyService {
     private final CurrencyRepositoryPort currencyRepository;
 
     public List<Currency> getAllCurrencies() {
-        return currencyRepository.findAll();
+        return currencyRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(Currency::getCode))
+                .toList();
     }
 
     public Currency getCurrency(String code) {

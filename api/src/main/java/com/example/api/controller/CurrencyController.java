@@ -28,12 +28,7 @@ public class CurrencyController {
     @Operation(summary = "Get all currencies")
     @GetMapping
     public BaseResponseApi<List<CurrencyResponse>> getAll() {
-        var result = currencyService.getAllCurrencies()
-                .stream()
-                .map(mapper::toResponse)
-                .toList();
-
-        return BaseResponseApi.success(result, messageSource);
+        return BaseResponseApi.success(mapper.toResponse(currencyService.getAllCurrencies()), messageSource);
     }
 
     @Operation(summary = "Get a currency by code")
